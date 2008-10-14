@@ -1,0 +1,2 @@
+pmr2.mercurial https://svn.physiomeproject.org/svn/physiome/pmr2.mercurial/trunk/
+pmr2.app https://svn.physiomeproject.org/svn/physiome/pmr2.app/trunk/
