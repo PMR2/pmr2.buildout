@@ -1,0 +1,6 @@
+bin/*
+develop-eggs/*
+eggs/*
+parts/*
+var/filestorage/*
+var/instance/*
