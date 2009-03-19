@@ -1,5 +1,6 @@
 pmr2.processor.legacy https://svn.physiomeproject.org/svn/physiome/pmr2.processor.legacy/trunk/
 pmr2.processor.cmeta https://svn.physiomeproject.org/svn/physiome/pmr2.processor.cmeta/trunk/
+pmr2.processor.cellmlapi https://svn.physiomeproject.org/svn/physiome/pmr2.processor.cellmlapi/trunk/
 pmr2.mercurial https://svn.physiomeproject.org/svn/physiome/pmr2.mercurial/trunk/
 pmr2.app https://svn.physiomeproject.org/svn/physiome/pmr2.app/trunk/
 cellml.theme https://svn.physiomeproject.org/svn/physiome/cellml.theme/trunk/
