@@ -1,5 +1,30 @@
-Installation Instruction for models.cellml.org
-==============================================
+Installation (Upgrade) Instruction for models.cellml.org
+========================================================
+
+Checklist for making a release
+------------------------------
+
+For creating a staging instance, the detailed instructions for 
+deployment may be followed, but some steps could be simplified (such
+as not needing ssh tunnels, not using the deployment split buildout or
+the default test instance buildout).
+
+For reliable testing, do get a copy of the live Data.fs, but do change
+the admin password for that copy to prevent mixup with logging into the
+production copy.
+
+Nominate users to test PMR2.  The scripts they should go through has not
+been written, but it will be soon.  The purpose of this is to let them
+see that nothing they are acustom to using has not been broken, and
+introduce new features to them.
+
+Then stage this on an identical VM as the production as a dry run, using
+the instructions below.  If the tests passed and no other visible flaws
+are found (also let those nominated users have a go at it, if firewall
+
+
+Procedures on production/deployment server
+------------------------------------------
 
 These instructions assume these conditions are met:
 
@@ -16,8 +41,8 @@ Optional, but helpful knowledge:
 
 0) use screen for multiple terminal windows.
 
-Procedure
----------
+Detailed instructions for deployment
+------------------------------------
 
 Get a shell on the production server using your favorite terminal 
 emulator, then sudo as zope like so.
