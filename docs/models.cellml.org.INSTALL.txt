@@ -1,0 +1,140 @@
+Installation Instruction for models.cellml.org
+==============================================
+
+These instructions assume these conditions are met:
+
+0) user can ssh to models.cellml.org;
+1) sudo as the zope user on the server;
+2) create ssh tunnel to the internal zope server port;
+3) navigate around the ZMI;
+4) know the IP address of the ABI proxy, or access to a known proxy;
+5) know how to configure Apache reverse proxy;
+6) reconfigure the virtual host monster string to the upgraded server;
+7) know how to setup init.d/rc.# scripts.
+
+Optional, but helpful knowledge:
+
+0) use screen for multiple terminal windows.
+
+Procedure
+---------
+
+Get a shell on the production server using your favorite terminal 
+emulator, then sudo as zope like so.
+
+    upi000@abiwwwprd01 ~ $ sudo -H -u zope http_proxy=... bash
+    zope@abiwwwprd01 /home/upi001 $ cd /home/zope
+
+From here on we assume the bash shell is under the zope user.  First
+you must update the local copy of the buildout git svn clone.
+
+    $ cd pmr2.buildout
+    $ git svn rebase
+
+Then merge the latest branch into the live branch.  The local live
+branch contains proxy information.
+
+    $ git checkout live
+    $ git merge 0.3
+
+Resolve all conflicts and commit them if any exists.
+
+Open up the buildout file and make sure the port numbers specified are
+not being used by the current production server.  The actual buildout is
+not executed here, but in the two other subdirectories (screen is useful
+to open these two locations at once), which resides in:
+
+    ${INSTANCE_HOME}    /home/zope/pmr2/instance/`date +%Y%m%d`
+    ${ZEOSERVER_HOME}   /home/zope/pmr2/zeo/`date +%Y%m%d`
+
+(Note: `date +%Y%m%d` generates the current datestamp)
+
+The current servers should reside in each of these datestamped 
+directories.  So what you would do is to clone or export the git local
+clone into a new directory in this format, and then run the respective
+buildout scripts in them after bootstrapping (in both of them) like so:
+
+In ${ZEOSERVER_HOME}
+
+    $ git clone /home/zope/pmr2.buildout ${ZEOSERVER_HOME}
+    $ cd ${ZEOSERVER_HOME}
+    $ python2.4 bootstrap.py
+    $ bin/buildout -c zeo-instance.cfg
+
+In ${INSTANCE_HOME}
+
+    $ git clone /home/zope/pmr2.buildout ${INSTANCE_HOME}
+    $ cd ${INSTANCE_HOME}
+    $ python2.4 bootstrap.py
+    $ bin/buildout -c deploy-instance.cfg
+
+Hopefully everything should build without errors.  Go get a sandwich
+during the mean time as it takes about 15-30 minutes.
+
+If everything is done, go back into the ${INSTANCE_HOME} directory and
+run tests.
+
+    $ bin/instance test -s pmr2 -s cellml
+
+This tests all the PMR2 packages and CellML packages.  If everything
+passed we can procede to migrate data.
+
+At this point the CellML group needs to be notified that no more 
+exposures should be made (Mercurial access will remain available) as
+the data migration for the zeodb begins here.
+
+First obtain a clone of current Data.fs.  Do pack it and then put it
+into ${ZEOSERVER_HOME}/var/filestorage.
+
+Then start zeoserver:
+
+    $ ${ZEOSERVER_HOME}/bin/zeoserver-deploy start
+
+Now start the instance using paster, but run it in the foreground.
+
+    $ cd ${INSTANCE_HOME}
+    $ bin/paster-deploy serve paster_deploy.ini
+
+You will also need to tunnel into this port, as only two ports (ssh and
+http) are opened.
+
+Once everything started and ssh tunnel set up, the upgrade may procede.
+
+In the products installation zmi menu, reinstall all affected products.
+
+Run any extra migration scripts if necessary.
+
+In portal catalog, reindex everything.
+
+Verify all contents look the same.
+
+One last thing is to make sure the CellML theme is set to the PMR2
+profile (so the logo points to the CellML site and not the home page of
+the model repository).  Go to portal_setup, import, select the 'CellML
+Theme (PMR2)' profile, import all steps.
+
+Then everything should be ready.
+
+At this point apache should be reconfigured to point to the new port,
+and update the reverse proxy string.
+
+Notify that there will be a brief downtime for the repository.
+
+Reload apache.  It should come back with the temporarily running new
+server.
+
+The old server could be stopped at this point for it is no longer 
+needed.
+
+The init.d script need to be updated to the new location.
+
+Stop the temporary server, start it as per normal (via /etc/init.d)
+
+We are done.
+
+Known Issues
+------------
+
+In Red Hat Enterprise Linux
+- The provided python-setuptools package is out of date.  Remove it to
+  prevent conflicts during buildout.
