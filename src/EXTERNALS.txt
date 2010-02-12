@@ -4,4 +4,5 @@ pmr2.processor.cellmlapi https://svn.physiomeproject.org/svn/physiome/pmr2.proce
 pmr2.mercurial https://svn.physiomeproject.org/svn/physiome/pmr2.mercurial/trunk/
 pmr2.app https://svn.physiomeproject.org/svn/physiome/pmr2.app/trunk/
 cellml.theme https://svn.physiomeproject.org/svn/physiome/cellml.theme/trunk/
+cellml.pmr2 https://svn.physiomeproject.org/svn/physiome/cellml.pmr2/trunk/
 pmr2.pmrimport https://svn.physiomeproject.org/svn/physiome/pmr2.pmrimport/trunk/
