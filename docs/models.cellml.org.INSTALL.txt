@@ -298,7 +298,7 @@ symlinked.
     $ sudo mv pmr2.paster.redhat pmr2.paster.redhat.old
     $ sudo mv pmr2.zeo.redhat pmr2.zeo.redhat.old
     $ sudo ln -s ${INSTANCE_HOME}/pmr2.paster.redhat
-    $ sudo ln -s ${ZEOSERVER_HOME}/bin/zeoserver-deploy
+    $ sudo ln -s ${ZEOSERVER_HOME}/bin/zeoserver-deploy pmr2.zeo.redhat
 
 Stop the temporary server (this causes the downtime).  As the paster
 currently is running in the foreground, just send a ctrl-c to it.
