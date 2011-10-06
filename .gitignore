@@ -4,3 +4,4 @@ eggs/*
 parts/*
 var/*
 .installed.cfg
+.mr.developer.cfg
