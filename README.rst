@@ -21,8 +21,9 @@ Develop
 -------
 
 To get the standard development site set up, just clone this repoistory,
-call bootstrap and run the buildout as normal; this will just use the
-default `buildout.cfg` and the development site will be built.
+call bootstrap with the ``--distribute`` flag and run the buildout as
+normal; this will just use the default ``buildout.cfg`` and the
+development site will be built.
 
 Example::
 
@@ -31,8 +32,8 @@ Example::
     ...
     Resolving deltas: 100% (...), done.
     $ cd pmr2.buildout
-    $ python2.6 bootstrap.py  # Python 2.6 is required
-    Downloading http://pypi.python.org/.../setuptools-0.6c11-py2.6.egg
+    $ python bootstrap.py --distribute
+    Downloading http://pypi.python.org/.../distribute-0.6.35.tar.gz
     Creating directory '/.../pmr2.buildout/bin'.
     Creating directory '/.../pmr2.buildout/parts'.
     Creating directory '/.../pmr2.buildout/eggs'.
@@ -43,7 +44,7 @@ Example::
     $ bin/buildout
 
 The development buildout uses mr.developer, which will then clone the
-repositories with the packages that make up PMR2 into the `src`
+repositories with the packages that make up PMR2 into the ``src``
 directory.  Other dependencies will then be fetched, this will take some
 time.
 
@@ -62,11 +63,11 @@ Staging or Deployment
 
 This is achieved using the staging or development buildout
 configuration.  You may specific a configuration file when running
-`bin/buildout`.  For example, if this is a deployment instance, this may
-be issued::
+``bin/buildout``.  For example, if this is a deployment instance, this
+may be issued::
 
     $ bin/buildout -c deploy-instance.cfg
 
 This will not use mr.developer to clone the repository, instead the
 packaged versions of PMR2 related eggs will be fetched instead.  The
-version fetched is specified in `version.cfg`.
+version fetched is specified in ``version.cfg``.
