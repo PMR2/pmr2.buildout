@@ -21,9 +21,11 @@ Develop
 -------
 
 To get the standard development site set up, just clone this repoistory,
-call bootstrap with the ``--distribute`` flag and run the buildout as
-normal; this will just use the default ``buildout.cfg`` and the
-development site will be built.
+call bootstrap, with the specific version 1.5.2 as buildout 2 no longer
+isolate the system python in the way that it used to work.
+
+After that, run the buildout as normal; this will just use the default
+``buildout.cfg`` and the development site will be built.
 
 Example::
 
@@ -32,8 +34,8 @@ Example::
     ...
     Resolving deltas: 100% (...), done.
     $ cd pmr2.buildout
-    $ python bootstrap.py --distribute
-    Downloading http://pypi.python.org/.../distribute-0.6.35.tar.gz
+    $ python2.6 bootstrap.py --version 1.5.2
+    Downloading http://pypi.python.org/.../setuptools-0.6c11-py2.6.egg
     Creating directory '/.../pmr2.buildout/bin'.
     Creating directory '/.../pmr2.buildout/parts'.
     Creating directory '/.../pmr2.buildout/eggs'.
@@ -44,7 +46,7 @@ Example::
     $ bin/buildout
 
 The development buildout uses mr.developer, which will then clone the
-repositories with the packages that make up PMR2 into the ``src``
+repositories with the packages that make up PMR2 into the `src`
 directory.  Other dependencies will then be fetched, this will take some
 time.
 
