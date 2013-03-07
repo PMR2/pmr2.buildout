@@ -17,6 +17,30 @@ deployment.  Please refer to the specific configuration file for further
 configuration options.
 
 
+Prerequisite 
+------------
+
+Before this buildout will build correctly, a number of packages and
+dependencies must be provided.  If this is to be done on a Debian/Ubuntu
+based system, these packages must be installed:
+
+* build-essential
+* python2.6-dev or python2.7-dev (depending on version of system python)
+
+If CellML API support is included
+
+* bison
+* cmake (2.8 and above)
+* flex
+* libgsl0-dev
+* libxml2-dev
+* libxslt1-dev
+* omniidl4 (or similar)
+
+If the experimental virtuoso integration is to be included:
+
+* unixodbc-dev
+
 Develop
 -------
 
