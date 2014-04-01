@@ -58,7 +58,7 @@ Example::
     ...
     Resolving deltas: 100% (...), done.
     $ cd pmr2.buildout
-    $ python2.6 bootstrap.py --version 1.5.2
+    $ python bootstrap.py --version 1.5.2
     Downloading http://pypi.python.org/.../setuptools-0.6c11-py2.6.egg
     Creating directory '/.../pmr2.buildout/bin'.
     Creating directory '/.../pmr2.buildout/parts'.
@@ -76,8 +76,8 @@ time.
 
 After buildout completes, you may start the development site::
 
-    $ bin/zeoserver-start  # start the zeoserver
-    $ bin/paster-testing serve paster_testing.ini  # starts Plone
+    $ bin/zeoserver-testing start  # start the zeoserver
+    $ bin/instance-testing fg      # run test server in the foreground
 
 Or run tests associated with PMR2::
 
