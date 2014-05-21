@@ -1,0 +1,76 @@
+#!/bin/sh
+
+### BEGIN INIT INFO
+# Provides:          pmr2.zeoserver
+# Required-Start:    $syslog $remote_fs
+# Required-Stop:     $syslog $remote_fs
+# Should-Start:      $remote_fs
+# Should-Stop:       $remote_fs
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: Start pmr2.zeoserver
+# Description:       Start the zeoserver located at 
+### END INIT INFO
+
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+INSTANCE_HOME=/path/to/zeoserver/home
+SCRIPT=$INSTANCE_HOME/bin/zeoserver-deploy
+
+[ -f $SCRIPT ] || exit 0
+
+DAEMON=$SCRIPT
+NAME="pmr2.zeoserver"
+DESC="pmr2.zeoserver"
+
+. /lib/lsb/init-functions
+
+case "$1" in
+    start)
+        log_daemon_msg "Starting $DESC" "$NAME"
+        if start-stop-daemon --quiet --oknodo --chuid zope:zope \
+                             --exec ${DAEMON} --start start
+        then
+            log_end_msg 0
+        else
+            log_end_msg 1
+        fi
+        ;;
+
+    stop)
+        log_daemon_msg "Stopping $DESC" "$NAME"
+        if start-stop-daemon --quiet --oknodo --chuid zope:zope \
+                             --exec ${DAEMON} --start stop
+        then
+            log_end_msg 0
+        else
+            log_end_msg 1
+        fi
+        ;;
+
+    restart)
+        log_daemon_msg "Restarting $DESC" "$NAME"
+        if start-stop-daemon --quiet --oknodo --chuid zope:zope \
+                             --exec ${DAEMON} --start restart
+        then
+            log_end_msg 0
+        else
+            log_end_msg 1
+        fi
+        ;;
+
+    status)
+        start-stop-daemon --chuid zope:zope \
+                            --exec ${DAEMON} --start status
+        ;;
+
+    force-reload)
+        echo "$NAME doesn't support force-reload, use restart instead."
+        ;;
+
+    *)
+        echo "Usage: /etc/init.d/$NAME {start|stop|status|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
