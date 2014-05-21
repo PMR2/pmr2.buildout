@@ -35,7 +35,7 @@ If CellML API support is included
 * libgsl0-dev
 * libxml2-dev
 * libxslt1-dev
-* omniidl4 (or similar)
+* omniidl4 (or similar; omniidl on Debian 7.5)
 
 If the experimental virtuoso integration is to be included:
 
@@ -58,7 +58,7 @@ Example::
     ...
     Resolving deltas: 100% (...), done.
     $ cd pmr2.buildout
-    $ python bootstrap.py --version 1.5.2
+    $ python bootstrap.py
     Downloading http://pypi.python.org/.../setuptools-0.6c11-py2.6.egg
     Creating directory '/.../pmr2.buildout/bin'.
     Creating directory '/.../pmr2.buildout/parts'.
