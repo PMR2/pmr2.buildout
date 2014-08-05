@@ -116,8 +116,8 @@ browser to the location (should be http://localhost:8280/).  Follow the
 instructions on that page to create the default Plone site (if default
 credentials are used, it should be admin/admin for login/password).
 
-Once the default Plone site is added, selecte `Site Setup`, then Add-on
-Products.
+Once the default Plone site is added, select `Site Setup` using the user
+drop-down menu on the upper-right corner of the site, then `Add-ons`.
 
 On that page you will see a list of products available for installation.
 Select `Physiome Model Repository 2`, then select `Install`.  You may
@@ -143,4 +143,5 @@ workspace.
 Once you create a new workspace, you can view the sharing tab.  If you
 have other users created you can grant them permissions to push to the
 workspace. As admin you should be able to push changes in without issues
-from an existing Mercurial repository.
+from an existing Mercurial repository, or clone from new workspaces from
+which you can ``hg clone`` with.
