@@ -27,6 +27,13 @@ based system, these packages must be installed:
 * build-essential
 * python2.6-dev or python2.7-dev (depending on version of system python)
 
+Optional Dependencies
+~~~~~~~~~~~~~~~~~~~~~
+
+Some of these can be made optional - just remove the unneeded packages
+from the ``eggs`` and the ``zcml`` sections in the ``buildout.cfg``
+file.
+
 If CellML API support is included
 
 * bison
@@ -37,7 +44,8 @@ If CellML API support is included
 * libxslt1-dev
 * omniidl4 (or similar; omniidl on Debian 7.5)
 
-If the experimental virtuoso integration is to be included:
+If virtuoso integration (for the semantic reasoning, i.e. support for
+the RICORDO related packages) is to be included:
 
 * unixodbc-dev
 
@@ -76,7 +84,7 @@ time.
 
 After buildout completes, you may start the development site::
 
-    $ bin/zeoserver-testing start  # start the zeoserver
+    $ bin/zeoserver-testing start  # start the zeoserver in background
     $ bin/instance-testing fg      # run test server in the foreground
 
 Or run tests associated with PMR2::
@@ -97,3 +105,42 @@ may be issued::
 This will not use mr.developer to clone the repository, instead the
 packaged versions of PMR2 related eggs will be fetched instead.  The
 version fetched is specified in ``version.cfg``.
+
+
+Quick start on using the testing instance
+-----------------------------------------
+
+Assuming the `Develop` section was collowed, the test server should have
+successfully been installed and running in the foreground.  Point your
+browser to the location (should be http://localhost:8280/).  Follow the
+instructions on that page to create the default Plone site (if default
+credentials are used, it should be admin/admin for login/password).
+
+Once the default Plone site is added, selecte `Site Setup`, then Add-on
+Products.
+
+On that page you will see a list of products available for installation.
+Select `Physiome Model Repository 2`, then select `Install`.  You may
+pick any other relevant add-ons to install from that screen.
+
+Once `Physiome Model Repository 2` is installed, under the `Site Setup`
+menu there should be a new menu item called `PMR2 Core Configuration`,
+under the `Add-on Product Configuration`.  This should also be shown
+under the Site Setup sidebar.
+
+You may review the settings there.  The default directories are fine,
+but for any serious work please change it to an alternative location as
+the parts directory can become overwritten by the installer/buildout
+scripts.  Once you are happy, select `Apply and Create Objects`.  The
+Workspace and Exposure containers will be created at their respective
+locations.
+
+Go back to the home page.  You should see two new tabs, 'workspace' and
+'exposure' respectively. You can now go into 'workspace' and select 'Add
+new...' then 'PMR2 Workspace'.  From that screen you can create a new
+workspace.
+
+Once you create a new workspace, you can view the sharing tab.  If you
+have other users created you can grant them permissions to push to the
+workspace. As admin you should be able to push changes in without issues
+from an existing Mercurial repository.
