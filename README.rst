@@ -36,13 +36,17 @@ file.
 
 If CellML API support is included
 
-* bison
 * cmake (2.8 and above)
-* flex
 * libgsl0-dev
 * libxml2-dev
 * libxslt1-dev
 * omniidl4 (or similar; omniidl on Debian 7.5)
+
+If you wish to flip on the `enable-telicems` flag for this, you will
+also need:
+
+* bison-2.5 (bison-3.0 will *NOT* work).
+* flex
 
 If virtuoso integration (for the semantic reasoning, i.e. support for
 the RICORDO related packages) is to be included:
