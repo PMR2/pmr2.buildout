@@ -114,7 +114,7 @@ version fetched is specified in ``version.cfg``.
 Quick start on using the testing instance
 -----------------------------------------
 
-Assuming the `Develop` section was collowed, the test server should have
+Assuming the `Develop` section was followed, the test server should have
 successfully been installed and running in the foreground.  Point your
 browser to the location (should be http://localhost:8280/).  Follow the
 instructions on that page to create the default Plone site (if default
@@ -148,4 +148,5 @@ Once you create a new workspace, you can view the sharing tab.  If you
 have other users created you can grant them permissions to push to the
 workspace. As admin you should be able to push changes in without issues
 from an existing Mercurial repository, or clone from new workspaces from
-which you can ``hg clone`` with.
+which you can ``git clone`` with (or ``hg clone``, if mercurial is
+enabled).
