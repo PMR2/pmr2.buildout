@@ -25,6 +25,8 @@ dependencies must be provided.  If this is to be done on a Debian/Ubuntu
 based system, these packages must be installed:
 
 * build-essential
+* libxml2-dev
+* libxslt1-dev
 * python2.6-dev or python2.7-dev (depending on version of system python)
 
 Optional Dependencies
@@ -38,8 +40,6 @@ If CellML API support is included
 
 * cmake (2.8 and above)
 * libgsl0-dev
-* libxml2-dev
-* libxslt1-dev
 * omniidl4 (or similar; omniidl on Debian 7.5)
 
 If you wish to flip on the `enable-telicems` flag for this, you will
