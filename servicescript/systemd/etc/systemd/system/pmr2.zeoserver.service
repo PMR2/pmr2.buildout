@@ -1,0 +1,13 @@
+[Unit]
+Description=PMR2 Zeoserver
+After=network.target
+
+[Service]
+Type=forking
+EnvironmentFile=-/etc/default/pmr2
+ExecStart=/bin/sh -c "${PMR2_ZEOSERVER_HOME}/bin/zeoserver-deploy start"
+ExecStop=/bin/sh -c "${PMR2_ZEOSERVER_HOME}/bin/zeoserver-deploy stop"
+ExecReload=/bin/sh -c "${PMR2_ZEOSERVER_HOME}/bin/zeoserver-deploy restart"
+
+[Install]
+WantedBy=multi-user.target
