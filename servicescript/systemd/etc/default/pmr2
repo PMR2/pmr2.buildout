@@ -1,0 +1,5 @@
+# This file can be elsewhere, depending on the distro
+# Update the EnvironmentFile for the service definitions if differ
+PMR2_INSTANCE_HOME=/opt/zope/pmr2/instance
+PMR2_ZEOSERVER_HOME=/opt/zope/pmr2/zeoserver
+ZEO_BACKUP_DIR=/opt/zope/backup
