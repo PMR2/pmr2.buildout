@@ -29,6 +29,12 @@ based system, these packages must be installed:
 * libxslt1-dev
 * python2.6-dev or python2.7-dev (depending on version of system python)
 
+Debian 8 specific
+~~~~~~~~~~~~~~~~~
+
+* zlib1g-dev (for lxml)
+* libjpeg-dev (for Pillow)
+
 Optional Dependencies
 ~~~~~~~~~~~~~~~~~~~~~
 
