@@ -97,7 +97,7 @@ repositories with the packages that make up PMR2 into the `src`
 directory.  Other dependencies will then be fetched, this will take some
 time.
 
-After buildout completes, you may start the development site::
+After buildout completes, the development site may be started like so::
 
     $ bin/zeoserver-testing start  # start the zeoserver in background
     $ bin/instance-testing fg      # run test server in the foreground
@@ -111,7 +111,7 @@ Staging or Deployment
 ---------------------
 
 This is achieved using the staging or development buildout
-configuration.  You may specific a configuration file when running
+configuration.  A specific a configuration file may be specified for
 ``bin/buildout``.  For example, if this is a deployment instance, this
 may be issued::
 
@@ -126,7 +126,7 @@ Quick start on using the testing instance
 -----------------------------------------
 
 Assuming the `Develop` section was followed, the test server should have
-successfully been installed and running in the foreground.  Point your
+successfully been installed and running in the foreground.  Point a
 browser to the location (should be http://localhost:8280/).  Follow the
 instructions on that page to create the default Plone site (if default
 credentials are used, it should be admin/admin for login/password).
@@ -134,30 +134,30 @@ credentials are used, it should be admin/admin for login/password).
 Once the default Plone site is added, select `Site Setup` using the user
 drop-down menu on the upper-right corner of the site, then `Add-ons`.
 
-On that page you will see a list of products available for installation.
-Select `Physiome Model Repository 2`, then select `Install`.  You may
-pick any other relevant add-ons to install from that screen.
+On that page a list of products available for installation will be
+presented.  Select `Physiome Model Repository 2`, then select `Install`.
+Any other relevant add-ons to install from that screen may be selected.
 
 Once `Physiome Model Repository 2` is installed, under the `Site Setup`
 menu there should be a new menu item called `PMR2 Core Configuration`,
 under the `Add-on Product Configuration`.  This should also be shown
 under the Site Setup sidebar.
 
-You may review the settings there.  The default directories are fine,
-but for any serious work please change it to an alternative location as
-the parts directory can become overwritten by the installer/buildout
-scripts.  Once you are happy, select `Apply and Create Objects`.  The
-Workspace and Exposure containers will be created at their respective
-locations.
+The settings present should be reviewed; while the default directories
+are usable, production users should change it to an alternative location
+outside of Zope to avoid potential issues where the Zope/Plone installer
+and/or buildout prune or overwrite the contents within the parts
+directory.  When the options are configured select `Apply and Create
+Objects` to create the Workspace and Exposure containers along with the
+relevant filesystem locations.
 
-Go back to the home page.  You should see two new tabs, 'workspace' and
-'exposure' respectively. You can now go into 'workspace' and select 'Add
-new...' then 'PMR2 Workspace'.  From that screen you can create a new
+Retruning back the the home page, two new tabs should become visible,
+which are 'workspace' and 'exposure' respectively.   Select 'workspace'
+from the main content tabs, then using the 'Add new...' menu, select
+'PMR2 Workspace' to create a new workspace.
+
+User specific permissions to the newly created workspace can be granted
+with the sharing tab.  If other users requires push permission that can
+be granted.  As the owner has push permissions by default, the contents
+can be accessed using the respective DVCS that is backed by the current
 workspace.
-
-Once you create a new workspace, you can view the sharing tab.  If you
-have other users created you can grant them permissions to push to the
-workspace. As admin you should be able to push changes in without issues
-from an existing Mercurial repository, or clone from new workspaces from
-which you can ``git clone`` with (or ``hg clone``, if mercurial is
-enabled).
