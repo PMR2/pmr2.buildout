@@ -44,20 +44,25 @@ file.
 
 If CellML API support is included
 
-* cmake (2.8 and above)
+* gcc-4, as gcc-5+ results in compilation error.
+* cmake-2.8 and above, but 3.7.2 and above may fail to generate the
+  header files and results in compilation error
 * libgsl0-dev
-* omniidl4 (or similar; omniidl on Debian 7.5)
+* omniidl4 (or packages that offer that; omniidl on Debian 7.5; some
+  distributions may require the whole omniORB package).
 
-If you wish to flip on the `enable-telicems` flag for this, you will
-also need:
+If the `enable-telicems` flag is to be enabled, the following will also
+need to be present:
 
-* bison-2.5 (bison-3.0 will *NOT* work).
+* bison-2.5, <3.0; >=bison-3.0 was reported to *NOT* work.
 * flex
 
 If virtuoso integration (for the semantic reasoning, i.e. support for
 the RICORDO related packages) is to be included:
 
 * unixodbc-dev
+* may need to compile virtuoso for the odbc bridge shipped with Ubuntu
+  has reportedly cause segfaults.
 
 Develop
 -------
