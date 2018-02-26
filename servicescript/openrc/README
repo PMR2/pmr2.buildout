@@ -1,0 +1,17 @@
+These OpenRC init scripts may be copied into ``/etc/init.d``.
+
+Update all $PMR_* values in each of the scripts, then do the following:
+
+    # rc-update add pmr2.zeoserver default
+    # rc-update add pmr2.instance default
+
+You could test by doing
+
+    # /etc/init.d/pmr2.zeoserver start
+    # /etc/init.d/pmr2.instance start
+
+Then connect to your site.  For intended result, restart your server
+and ensure that both services come back online.
+
+Of course, if you renamed other paths/files please update your copy of
+the scripts accordingly.

@@ -1,0 +1,48 @@
+#!/sbin/openrc-run
+# Distributed under the terms of the GNU General Public License v2
+
+INSTANCE_HOME=${PMR_HOME}
+DAEMONUSER=${PMR_USER}
+DAEMONGROUP=${PMR_GROUP}
+
+SCRIPT=${INSTANCE_HOME}/bin/instance-${PMR_PROFILE}
+PIDFILE=${INSTANCE_HOME}/var/instance-${PMR_PROFILE}.pid
+
+[ -f $SCRIPT ] || eend 1
+
+DAEMON=$SCRIPT
+
+depend() {
+    need net
+    use pmr2.zeoserver
+}
+
+start() {
+    ebegin "Starting ${SVCNAME}"
+    start-stop-daemon --quiet --oknodo \
+                      --chuid $DAEMONUSER:$DAEMONGROUP \
+                      --pidfile ${PIDFILE} \
+                      --exec ${DAEMON} --start -- start
+    retval=$?
+    eend ${retval}
+}
+
+stop() {
+    ebegin "Stopping ${SVCNAME}"
+    start-stop-daemon --quiet --oknodo \
+                      --chuid $DAEMONUSER:$DAEMONGROUP \
+                      --pidfile ${PIDFILE} \
+                      --exec ${DAEMON} --stop -- stop
+    retval=$?
+    eend ${retval}
+}
+
+restart() {
+    ebegin "Restarting ${SVCNAME}"
+    start-stop-daemon --quiet --oknodo \
+                      --chuid $DAEMONUSER:$DAEMONGROUP \
+                      --pidfile ${PIDFILE} \
+                      --exec ${DAEMON} --restart -- restart
+    retval=$?
+    eend ${retval}
+}
